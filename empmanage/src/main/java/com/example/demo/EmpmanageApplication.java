@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 //@ComponentScan("com.ems.controller")
 //@ComponentScan("con.ems.service")
-@EntityScan("com.ems.dao.entity")
+@EntityScan("com.example.demo.entity")
 //@ComponentScan("com.ems.config")
 public class EmpmanageApplication {
 
