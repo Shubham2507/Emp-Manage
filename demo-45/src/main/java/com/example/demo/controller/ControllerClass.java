@@ -73,12 +73,7 @@ public class ControllerClass {
 	
 
 	
-/*	@Get
-	@Secured
-	@Path("/id")
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	
-public UserAuh*/
+
 	
 	 @RequestMapping("/users")
 	  public @ResponseBody String getUsers() {
@@ -86,29 +81,7 @@ public UserAuh*/
 	           "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
 	  }
 	 
-	 /*ControllerClass(AuthenticationManager authenticationManager) {
-	        this.authenticationManager = authenticationManager;
-	    }
-	 
-	 @GetMapping
-	    ResponseEntity index(HttpServletRequest request, HttpSession session) {
-	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	        return new ResponseEntity<>(authentication.getPrincipal(), HttpStatus.OK);
-	    }
-	 
-	 @PostMapping("/loginuser")
-	 ResponseEntity login(@RequestBody UserDetails loginRequest) {
-	     String username = loginRequest.getUsername();
-	     String password = loginRequest.getPassword();
-	     UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
-	     Authentication authentication = this.authenticationManager.authenticate(token);
-	     // vvv THIS vvv
-	     SecurityContextHolder
-	         .getContext()
-	         .setAuthentication(authentication);
-	     return new ResponseEntity<>(authentication.getPrincipal(), HttpStatus.OK);
-	 }*/
-
+	
 	}
  
 

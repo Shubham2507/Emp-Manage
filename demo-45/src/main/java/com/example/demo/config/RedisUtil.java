@@ -26,7 +26,7 @@ RedisTemplate<String, String> redisTemplate;
         } finally {
             if (jedis != null) 
             {
-            jedis.expire(key, 5);
+            jedis.expire(key, 300);
                 jedis.close();
             }
         }

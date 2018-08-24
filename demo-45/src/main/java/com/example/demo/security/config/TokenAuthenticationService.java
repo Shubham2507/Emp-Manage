@@ -22,7 +22,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class TokenAuthenticationService {
 
 
-	static final long EXPIRATIONTIME = 500000; 
+	static final long EXPIRATIONTIME =300_000; 
 	static final String SECRET = "ThisIsASecret";
 	static final String TOKEN_PREFIX = "Bearer";
 	static final String HEADER_STRING = "Authorization";
@@ -35,7 +35,7 @@ public class TokenAuthenticationService {
 				.signWith(SignatureAlgorithm.HS512, SECRET)
 				.compact();
 		res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
-		RedisUtil.INSTANCE.sadd("Redis_Token", JWT);
+		RedisUtil.INSTANCE.sadd("Token_Active", JWT);
 		
 	}
 	static Authentication getAuthentication(HttpServletRequest request) throws ServletException {

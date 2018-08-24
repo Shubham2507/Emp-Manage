@@ -55,6 +55,18 @@ public class Employee implements Serializable{
 		this.location = location;
 	}
 
+	public Employee(int id, String firstName, String lastName, String location) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.location = location;
+	}
+
+	public Employee() {
+		super();
+	}
+
 
 
 	

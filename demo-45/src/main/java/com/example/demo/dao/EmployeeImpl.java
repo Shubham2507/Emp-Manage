@@ -19,7 +19,7 @@ public class EmployeeImpl implements IEmployee {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> getAllEmployee() {
-		String hql = "FROM Employee as atcl ORDER BY atcl.id";
+		String hql = "FROM Employee ";
 		return (List<Employee>) entityManager.createQuery(hql).getResultList();
 	}
 
