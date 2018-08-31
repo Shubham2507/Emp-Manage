@@ -28,7 +28,7 @@ public class TokenAuthenticationService {
 	static final String HEADER_STRING = "Authorization";
 	
 	
-	static void addAuthentication(HttpServletResponse res, String username) {
+	public static String addAuthentication(HttpServletResponse res, String username) {
 		String JWT = Jwts.builder()
 				.setSubject(username)
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
@@ -36,6 +36,7 @@ public class TokenAuthenticationService {
 				.compact();
 		res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 		RedisUtil.INSTANCE.sadd("Token_Active", JWT);
+		return JWT;
 		
 	}
 	static Authentication getAuthentication(HttpServletRequest request) throws ServletException {

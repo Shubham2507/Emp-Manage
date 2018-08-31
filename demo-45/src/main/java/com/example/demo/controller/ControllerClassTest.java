@@ -29,6 +29,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 /*@Ignore*/
 @RunWith(SpringRunner.class)
+
 @WebMvcTest(value =  ControllerClass.class, secure = false)
 public class ControllerClassTest {
 	@Autowired
@@ -37,7 +38,7 @@ public class ControllerClassTest {
 	private IService iservice;
 	List<Employee> emp= Arrays.asList( new Employee(1,"Manohar","Kumar","Noida"));
 	String exampleCourseJson = "[{\"id\":\"1\",\"firstName\":\"Manohar\",\"lastName\":\"Kumar\",\"location\":\"Noida\"}]";
-	Employee emp1=null;
+	Employee emp1=new Employee(1,"Manohar","Kumar","Noida");
 	@Test
 	public void testAllEmployee() throws Exception {
 		Mockito.when(
@@ -119,21 +120,16 @@ public class ControllerClassTest {
 	@Test
 	public void getByID() throws Exception
 	{
-	try
-	{
-	RequestBuilder requestBuilder = MockMvcRequestBuilders.get("employee/{id}")
+	
+	RequestBuilder requestBuilder = MockMvcRequestBuilders.get("employee/1")
 	.requestAttr("id", emp1.getId())
 	.accept(MediaType.APPLICATION_JSON);
 	MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 	 
-	String expected="{\"id\":1,\"firstName\":\"Manohar\",\"lastName\":Kumar,\"location\":Noida\"}";
+	String expected="";
 	assertEquals(expected, result.getResponse().getContentAsString());
 	System.out.println("getMedicineById successfully executed...");
-	}
-	catch(Exception e)
-	{
-	System.out.println(e);
-	}
+	
 	}
 	private String mapToJson(Object object) throws JsonProcessingException{
 		ObjectMapper objectmapper= new ObjectMapper();
